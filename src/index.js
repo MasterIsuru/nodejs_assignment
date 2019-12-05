@@ -1,7 +1,7 @@
 const { answerOne } = require('./questionOne');
 const { answerTwo } = require('./questionTwo');
 const { answerThree } = require('./questionThree');
-const { answerFourSync, answerFour } = require('./questionFour');
+const { answerFourSync, answerFour, answerFourPartTwo } = require('./questionFour');
 
 console.log('It works!');
 
@@ -11,8 +11,8 @@ answerOne();
 answerTwo();
 answerThree();
 answerFourSync();
-answerFour({ withErrors: true });
+answerFour();
 
 // BONUS - Part 2
-answerFour({ withErrors: true, slow: true });
-answerFour({ slow: true });
+answerFourPartTwo({ withErrors: true, slow: true });
+answerFourPartTwo({ slow: true });

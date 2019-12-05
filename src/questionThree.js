@@ -1,25 +1,19 @@
 const { getRandomWord } = require('word-maker');
 const fizzBuzz = require('./fizzBuzz');
 
-function answerThree() {
+async function answerThree() {
     var i;
-    var promises = [];
+    console.log('----------------- Question 3 -----------------');
     for (i = 1; i < 101; i++) {
-        promises.push(getRandomWord());
+        let word = await getRandomWord();
+        console.log(`${i}: ${word}`);
     }
-
-    Promise.all(promises)
-        .then(words => {
-            console.log('----------------- Question 3 -----------------');
-            words.map((word, i) => {
-                console.log(`${i + 1}: ${word}`);
-            });
-            console.log('----------------------------------------------');
-            words.map((word, i) => {
-                console.log(`${i + 1}: ${fizzBuzz(i + 1, word)}`);
-            });
-            console.log('----------------------------------------------');
-        });
+    console.log('----------------------------------------------');
+    for (i = 1; i < 101; i++) {
+        let word = await getRandomWord();
+        console.log(`${i}: ${fizzBuzz(i, word)}`);
+    }
+    console.log('----------------------------------------------');
 }
 
 module.exports = { answerThree };

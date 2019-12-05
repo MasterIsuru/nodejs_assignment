@@ -19,7 +19,25 @@ function answerFourSync() {
     console.log('----------------------------------------------');
 }
 
-function answerFour(params) {
+async function answerFour() {
+    var i;
+    console.log('--------- Question 4 - async  ----------------');
+    for (i = 1; i < 101; i++) {
+        let word;
+        try {
+            word = fizzBuzz(i, await getRandomWord({ withErrors: true }));
+        }
+        catch (err) {
+            word = "It shouldn't break anything!";
+        }
+        finally {
+            console.log(`${i}: ${word}`);
+        }
+    }
+    console.log('----------------------------------------------');
+}
+
+function answerFourPartTwo(params) {
     var i;
     var promises = [];
     for (i = 1; i < 101; i++) {
@@ -50,7 +68,7 @@ function executeAllPromises(promises) {
     // Execute all wrapped Promises
     return Promise.all(resolvingPromises)
         .then(function (items) {
-            console.log('--------- Question 4 -------------------------');
+            console.log('--------- Question 4 - Part 2 ----------------');
             items.forEach(function (payload, i) {
                 if (payload[1]) {
                     console.log(`${i + 1}: It shouldn't break anything!`);
@@ -62,4 +80,4 @@ function executeAllPromises(promises) {
         });
 }
 
-module.exports = { answerFourSync, answerFour };
+module.exports = { answerFourSync, answerFour, answerFourPartTwo };
